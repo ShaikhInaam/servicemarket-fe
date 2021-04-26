@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div   class=" collapse show d-md-flex bg-light pt-2 pl-0 min-vh-100" id="sidebar">
+      <ul class="nav flex-column flex-nowrap overflow-hidden" >
+        <div *ngFor="let menu of menus" >
+        <li  *ngIf="isActive(menu)" class="nav-item" >
+          <div *ngIf="!isSubMenu(menu)">
+            <a class="nav-link py-1" [routerLink]="menu.menuURL">
+              <span>{{menu.menu}}</span>
+            </a>
+          </div>
+          <div *ngIf="isSubMenu(menu)">
+            <a class="nav-link collapsed text-truncate" href="#submenu{{menuId}}" data-toggle="collapse" data-target="#submenu{{menuId}}"><i class=" mr-2 fa fa-table"></i> <span class="d-none d-sm-inline">{{menu.menu}}</span></a>
+            <div class="collapse" id="submenu{{menuId}}" aria-expanded="false">
+            <ul class="flex-column pl-2 nav">
+              <div *ngFor="let menu1 of menu.subMenu" >
+                <li *ngIf="isActive(menu1)" class="nav-item">
+                  <div *ngIf="!isSubMenu(menu1)">
+                    <a class="nav-link py-1" [routerLink]="'/screens/'+menu1.menuURL">
+                      <span>{{menu1.menu}}</span>
+                    </a>
+                  </div>
+                  <div *ngIf="isSubMenu(menu1)">
+                  <a class="nav-link collapsed py-1" href="#submenu1{{menuId}}" data-toggle="collapse" data-target="#submenu1{{menuId}}"><span>{{menu1.menu}}</span></a>
+                  <div class="collapse" id="submenu1{{menuId}}" aria-expanded="false">
+                    <ul class="flex-column nav pl-4">
+                      <div *ngFor="let menu2 of menu1.subMenu" >
+                        <li *ngIf="isActive(menu2)" class="nav-item">
+                          <div *ngIf="!isSubMenu(menu2)">
+                            <a class="nav-link py-1" [routerLink]="menu2.menuURL">
+                              <span>{{menu2.menu}}</span>
+                            </a>
+                          </div>
+                          <div *ngIf="isSubMenu(menu2)">
+                          <a class="nav-link collapsed py-1" href="#submenu2{{menuId}}" data-toggle="collapse" data-target="#submenu2{{menuId}}"><span>{{menu2.menu}}</span></a>
+                          <div class="collapse" id="submenu2{{menuId}}" aria-expanded="false">
+                            <ul class="flex-column nav pl-4">
+                              <div *ngFor="let menu3 of menu2.subMenu" >
+                                <li *ngIf="isActive(menu3)" class="nav-item">
+                                  <div *ngIf="!isSubMenu(menu3)">
+                                    <a class="nav-link py-1" [routerLink]="'/screens/'+menu3.menuURL">
+                                      <span>{{menu3.menu}}</span>
+                                    </a>
+                                  </div>
+                                  <div *ngIf="isSubMenu(menu3)">
+
+                                  </div>
+                                </li>
+                              </div>
+                            </ul>
+                          </div>
+                          </div>
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
+                  </div>
+                </li>
+              </div>
+            </ul>
+          </div>
+          </div>
+        </li>
+        </div>
+      </ul>
+    </div>
+    <div class="col pt-2" *blockUI="'block-screen'">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

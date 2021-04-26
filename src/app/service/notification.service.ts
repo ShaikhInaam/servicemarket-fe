@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Injectable} from '@angular/core';
-import {jqxNotificationComponent} from "jqwidgets-ng/jqxnotification";
+import {jqxNotificationComponent} from 'jqwidgets-ng/jqxnotification';
 import * as $ from 'jquery';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class NotificationService {
   static warnNotification : jqxNotificationComponent;
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
+  // tslint:disable-next-line:typedef
   static setNotificationWidget(successNotification, errorNotification, warnNotification){
     this.successNotification = successNotification;
     this.errorNotification = errorNotification;
@@ -41,6 +42,7 @@ export class NotificationService {
     typeNotification.open();
   }
 
+  // tslint:disable-next-line:typedef
   static clossAll(){
     if(this.successNotification)
       this.successNotification.closeAll();
@@ -50,15 +52,18 @@ export class NotificationService {
       this.warnNotification.closeAll();
   }
 
-  static success(message:string, autoClose= true){
-    this.notify("success",message,autoClose)
+  // tslint:disable-next-line:typedef
+  static success(message: string, autoClose= true){
+    this.notify('success', message, autoClose);
   }
 
-  static error(message:string, autoClose= true){
-    this.notify("error",message,autoClose)
+  // tslint:disable-next-line:typedef
+  static error(message: string, autoClose= true){
+    this.notify('error', message, autoClose);
   }
 
-  static warn(message:string, autoClose= true){
-    this.notify("warn",message,autoClose)
+  // tslint:disable-next-line:typedef
+  static warn(message: string, autoClose= true){
+    this.notify('warn', message, autoClose);
   }
 }

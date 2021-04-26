@@ -1,0 +1,37 @@
+<div class="login">
+  <div class="login__content">
+    <div class="login__img">
+
+      <!-- =====BACKGROUND IMAGE===== -->
+
+      <img src="" alt="">
+
+      <!-- =====BACKGROUND IMAGE===== -->
+
+    </div>
+
+    <div class="login__forms">
+      <form [formGroup]="loginForm" *blockUI="'block-login'" class="login__registre" id="login-in">
+        <h1 class="login__title">Sign In</h1>
+
+        <div class="login__box">
+          <i class='bx bx-user login__icon'></i>
+          <input type="text" id="email" type="email"  formControlName="username" placeholder="Username" class="login__input">
+        </div>
+
+        <div class="login__box">
+          <i class='bx bx-lock-alt login__icon'></i>
+          <input id="password" type="password" name="password" formControlName="password" placeholder="Password" class="login__input">
+        </div>
+        <a href="#" class="login__forgot">Forgot password?</a>
+
+        <a (click)="onSubmit()" class="login__button">Sign In</a>
+
+        <div>
+          <span class="login__account">Don't have an Account ?</span>
+          <span class="login__signin" (click)="signUp()" id="sign-up">Sign Up</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
